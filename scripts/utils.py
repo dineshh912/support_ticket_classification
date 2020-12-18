@@ -4,6 +4,8 @@ from nltk.corpus import stopwords
 from nltk import WordNetLemmatizer
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+import os
 
 
 def tokenize_sentence(sentence: str, stop_words=True, punctuation=True, numbers=True, classified=True)->list:
@@ -88,7 +90,7 @@ def save_as_pickle(file_name, path_to_join, data):
 		data.to_pickle(pickled_file_loc)
 
 	except Exception as e:
-		return "failed"
+		return str(e)
 
 
 def plotConfusionMatrixHeatmap(input_df: pd.core.frame.DataFrame, model_name: str, figsize=(20, 18)):
