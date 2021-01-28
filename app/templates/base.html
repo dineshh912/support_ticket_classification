@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="support ticket classification">
+    <meta name="keywords" content="support_ticket_classification,IT support">
+    <meta name="author" content="Dineshkumar Sundaram">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+  </head>
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">DK</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="{{url_for('main.index')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.sample')}}">Sample Narrative</a>
+              </li>
+            </ul>
+              <a class="btn btn-outline-success" href="https://github.com/dineshh912/support_ticket_classification">Github</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-shrink-0">
+      {% block content %} {% endblock %}
+    </main>
+   
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <script>
+      $('#classify').on('click', function(e){
+        e.preventDefault();
+        text_narrative = $('#narrative').val();
+        $.ajax({
+          type: "PosT",
+          url: "/classify",
+          data: {"text_narrative": text_narrative},
+          success: function(data){
+            console.log(data);
+          },
+          error:function(data){
+            console.log(data);
+          }
+        })
+      })
+    </script>
+    
+    </body>
+</html>
