@@ -8,6 +8,11 @@ import re
 import string
 import joblib
 import warnings
+import nltk
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
 
 warnings.filterwarnings('ignore')
 
@@ -93,5 +98,9 @@ def classify():
     model = joblib.load(multinomial)
     result = model.predict([processed_text])
     results = {"class": key_to_label_name[result.item()]}
+
+    # probs = model.predict_proba(text_sample)
+    # best_n = np.argsort(probs, axis=1)[:, -3:]
+    # preds=[[model_mnb.classes_[predicted_cat] for predicted_cat in prediction] for prediction in best_n]
 
     return jsonify(results)
