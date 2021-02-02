@@ -50,7 +50,7 @@
           url: "/classify",
           data: {"text_narrative": text_narrative},
           success: function(data){
-            console.log(data);
+            $('#data').html(data['class']);
           },
           error:function(data){
             console.log(data);

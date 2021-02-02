@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <h1 class="display-6 text-center mb-5">asd</h1>
+    <h1 class="display-6 text-center mb-5">Support ticket classification</h1>
     <div class="card">
         <div class="row">
             <div class="col-md-8">
-                <textarea class="form-control z-depth-1" name="narrative" id="narrative"rows="10" placeholder="Enter narrative here..."></textarea>
-                <button class="btn btn-success mt-3 mb-3 text-center" id="classify">Classify</button>
+                <textarea class="form-control z-depth-1 mt-3 ml-3" name="narrative" id="narrative"rows="10" placeholder="Enter narrative here..."></textarea>
+                <div class="text-center">
+                    <button class="btn btn-success mt-3 mb-3 text-center" id="classify">Classify</button>
+                </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center mt-5">
+            <h4 id="data" ></h4></div>
         </div>
         </div>
 </div>
