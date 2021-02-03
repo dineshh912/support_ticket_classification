@@ -44,6 +44,7 @@
     <script>
       $('#classify').on('click', function(e){
         e.preventDefault();
+        $('#data').html('');
         text_narrative = $('#narrative').val();
         $.ajax({
           type: "PosT",
